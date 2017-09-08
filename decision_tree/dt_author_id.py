@@ -24,8 +24,18 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+from sklearn import tree
+from sklearn.metrics import accuracy_score
+
+def predict_author():
+	#return len(features_train[0])
+	clf = tree.DecisionTreeClassifier(min_samples_split = 40)
+	clf.fit(features_train, labels_train)
+	predictions = clf.predict(features_test)
+	return accuracy_score(labels_test, predictions)
 
 
+print(predict_author())
 #########################################################
 
 
