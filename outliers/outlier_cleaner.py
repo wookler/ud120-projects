@@ -14,7 +14,10 @@ def outlierCleaner(predictions, ages, net_worths):
     cleaned_data = []
 
     ### your code goes here
-
+    for i in range(len(predictions)):
+        cleaned_data.append((ages[i],net_worths[i], abs(predictions[i]-net_worths[i])))
     
-    return cleaned_data
+    cleaned_data.sort(key = lambda data_point: data_point[2])
+
+    return cleaned_data[0:81]
 
